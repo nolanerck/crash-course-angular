@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Crash Course In Angular</title>
+
+		<link rel="stylesheet" href="../Reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../Reveal.js/css/theme/moon.css" id="theme">
+		<style>
+			.reveal h2
+			{ 
+				text-transform: none; 
+				font-size: 60px;
+			}
+
+			.reveal ul li, .reveal p
+			{
+				font-size: 34px;
+				text-align: left;
+			}
+
+			.highlight 
+			{ 
+				color: green 
+			}
+
+			.code
+			{
+				font-family: "Courier";
+				color: green;
+			}
+
+			.reveal p.centered
+			{
+				text-align: center;
+			}
+
+			.reveal ul.remove-dot
+			{
+				list-style-type: none;
+			}
+		</style>		
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Crash Course In Angular</h2>
+					<p class="centered">Nolan Erck</p>
+					<p class="centered">South of Shasta Consulting</p>
+				</section>
+
+				<section>
+					<h2>About Me</h2>
+					<ul>
+						<li>Software Consultant (southofshasta.com)
+							<ul>
+								<li>Software Development, Training, Design</li>
+							</ul>
+						</li>
+
+						<li>ColdFusion, C++, Java, jQuery, PHP, .NET, HTML5, Android, SQL, etc...</li>
+						<li>Manager, SacInteractive User Group</li>
+						<li>Reformed Video Game Developer (Grim Fandango, SimPark, StarWars Rogue Squadron, etc).</li>
+						<li>Music Junkie</li>
+					</ul>
+				</section>
+
+				<section data-background-image="./images/record-collection.jpg">
+				</section>
+
+				<section data-background-image="./images/charlie_brown.png" data-background-size="contain">
+				</section>
+
+				<section>
+					<h2>Code And Slides</h2>
+					<p class="centered">github.com/nolanerck</p>
+					<p class="centered">crash-course-angular</p>
+				</section>
+
+				<section>
+					<h2>Today's Agenda</h2>
+					<ul>
+						<li>High level intro to Angular, MVC and MVVM</li>
+						<li>Some Angular basics</li>
+<!--						<li>Intro to Ionic</li>
+						<li>Some Ionic basics</li> -->
+						<li>A real world Angular+Ionic mobile app</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Prerequisites</h2>
+					<ul>
+						<li>Good understanding of “modern” JavaScript.</li>
+						<li>Scopes, anonymous functions, classes, objects.</li>
+						<li>Previous MVC experience is helpful.</li>
+						<li>You'll also get exposed to:</li>
+						<li>Node.js, npm, and a tiny bit of Ionic</li>
+					</ul>
+
+					<p>And 1 more thing you need to know...</p>
+				</section>
+
+				<section>
+					<h2>Prerequisites</h2>
+
+					<ul>
+						<li>Object Oriented Programming is hard.</li>
+						<li>This “hybrid mobile” stuff is different than what you may be used to.</li>
+						<li>Angular 2+ added a <em>lot</em> of new "stuff".
+							<ul>
+								<li>Learning curve is higher than Angular 1.x</li>
+							</ul>
+						</li>
+						<li>Some of it is confusing at first.</li>
+					</ul>
+
+					<p>And that's NORMAL.</p>
+				</section>
+
+				<section>
+					<h2>What is Angular?</h2>
+
+					<ul>
+						<li>1.x is MVC framework for JavaScript</li>
+						<li>2+ is MVVM framework for JavaScript</li>
+						<li>Command line tools</li>
+						<li>Lives on top of node and npm</li>
+						<li>Dependency Injection</li>
+						<li>Routes</li>
+						<li>2-way Data Binding</li>
+						<li>Various other things...</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is MVC?</h2>
+
+					<ul>
+						<li>Model View Controller</li>
+						<li>Design Pattern</li>
+						<li>Splits your app up into 3 logical sections.</li>
+						<li>Model – where your data and related logic goes.</li>
+						<li>View – the parts of your app you “view” (HTML, CSS).</li>
+						<li>Controller - hooks Model and View together, passes data between them</li>
+						<li>The "restaurant" analogy</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is MVVM?</h2>
+
+					<ul>
+						<li>Model View View Model</li>
+						<li>Design Pattern</li>
+						<li>Splits your app up into 2 logical sections.</li>
+						<li>Model – where your data and related logic goes.</li>
+						<li>View – the parts of your app you “view” (HTML, CSS).</li>
+						<li>A restaurant on The Jetsons</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>The “Model”</h2>
+					<ul>
+						<li>Short for “data model” (kind of)</li>
+						<li>Where your data and business logic lives</li>
+						<li>Data can be a local JS variable, localStorage, REST API, some other ajax request, etc.</li>
+						<li>The app doesn't care</li>
+						<li>Restaurant: the kitchen</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>The "View"</h2>
+
+					<ul>
+						<li>The part of the app you “view”.</li>
+						<li>HTML, CSS, JavaScript</li>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+this part here is the “view”
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+						<li>Restaurant: the menu and plates of food</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>MVVM - All Together</h2>
+<pre>
+		Model                    View
+		-data                    -HTML
+		-localStorage	--&gt;      -CSS
+		-business logic &lt;--      -Bootstrap
+		-etc                     -etc
+</pre>
+					<p class="centered">Angular supports 2-way data binding</p>
+				</section>
+
+				<section>
+					<h2>Angular 2+ Uses TypeScript</h2>
+					<ul>
+						<li>Remember trying to "fake" inheritance in vanilla JS?</li>
+						<li>Remember "proto" and "prototype"?</li>
+						<li>Remember how painful that was?</li>
+						<li>And you <em>still</em> couldn't do most other OO things correctly</li>
+						<li>Boo!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular 2+ Uses TypeScript</h2>
+					<ul>
+						<li>Enter TypeScript</li>
+						<li>Let's you write <em>real</em> OO style JavaScript</li>
+						<li>Same (or similar) concepts and keywords you know from other languages</li>
+						<li>Constructors, methods, "this", etc all look more like Java, CFML, C#, etc</li>
+						<li>Data is typed - real ints, arrays, etc</li>
+						<li>Yay!</li>
+						<li><em>Plus</em> all the normal JavaScript stuff you know...and love?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular 2+ Uses TypeScript</h2>
+					<ul>
+						<li>Uses a "transpiler"</li>
+						<li>Command line tool</li>
+						<li>Converts the .ts files into plain .js that browsers understand</li>
+						<li>Baked into Angular CLI</li>
+						<li>You don't have to install or do anything extra</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>TypeScript is Object Oriented JavaScript</h2>
+					<ul>
+						<li>And so by design so is Angular</li>
+						<li>All the code you write is in Classes and Objects</li>
+						<li>But you don't have to do anything beyond some basics to get started</li>
+						<li>Use the fancier stuff when you need to, and when you're ready</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How to start using Angular?</h2>
+
+					<ul>
+						<li>Install node and npm</li>
+						<li class="code">npm install -g @angular/cli</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How to start using Angular?</h2>
+
+					<ul>
+						<li>Create a new project</li>
+						<li class="code">ng new HelloWorldApp</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How to start using Angular?</h2>
+
+					<ul>
+						<li>Serve the application</li>
+						<li class="code">cd HelloWorldApp</li>
+						<li class="code">ng serve</li>
+						<li class="code">ng serve --open</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular HelloWorld App</h2>
+				</section>				
+
+				<section>
+					<h2>What are &lt;these-things&gt;?</h2>
+					<ul>
+						<li>Angular Components</li>
+						<li>Building blocks for your app</li>
+						<li>Follow the MVVM design pattern</li>
+						<li>Model - your business logic and data</li>
+						<li>View - stuff you see on the screen</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular Components</h2>
+					<ul>
+						<li>Easiest way to add a new component</li>
+						<li class="code">ng generate component MetalBandList</li>
+						<li class="code">ng g c MetalBandList</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What's the Catch w/ Angular?</h2>
+					<ul>
+						<li>New Angular version every 6 months</li>
+						<li>Can be hard to find some details in the docs</li>
+						<li>Officlal docs and demos are a bit terse</li>
+						<li>Not everyone loves CLIs</li>
+						<li>A bit of a learning curve</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>So What's the Deal with Routes?</h2>
+					<ul>
+						<li>Angular team likes to rebuild the "route" stuff.</li>
+						<li>A lot</li>
+						<li>Often</li>
+						<li>With no regard for backward compatibility</li>
+						<li>So do other 3rd parties</li>
+						<li>Make it stop!</li>
+						<li>First non-MVC sticking point</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>So, That's Angular</h2>
+					<ul>
+						<li>That (in an extreme nutshell) is Angular.</li>
+						<li>(There are LOTS more features we didn't cover.)</li>
+						<li>Can be used by itself for SPA web apps.</li>
+						<li>Not mobile-specific.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>A Real(-ish) Angular App</h2>
+					<ul>
+						<li>7 Seconds Discography App</li>
+						<li>Built on Angular + Ionic</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Other Resources</h2>
+					<ul>
+						<li>Angular.io, ionicframework.com, GitHub</li>
+						<li>Great Angular 4 tutoriaal on rishabh.io</li>
+						<li>"Pro AngularJS" for version 1.x stuff</li>
+						<li>Ionic Creator IDE</li>
+						<li>Ionic View – easy “private QA” app</li>
+						<li>Ray Camden's Ionic presos</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Questions? Comments?<br />Need Help With a Project?</h2>
+					<ul>
+						<li>southofshasta.com</li>
+						<li>nolan@southofshasta.com</li>
+						<li>Twitter: @southofshasta</li>
+						<li>Github: nolanerck</li>
+					</ul>
+					<p class="centered">Thanks!</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../Reveal.js/js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize();
+		</script>
+
+		<script defer src="../fontawesome/on-server/js/fontawesome-all.js"></script>
+
+	</body>
+</html>
