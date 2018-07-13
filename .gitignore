@@ -8,6 +8,9 @@
 
 # dependencies
 /node_modules
+/AngularDemos/HelloWorldApp/node_modules
+/AngularDemos/PopCultureApp/node_modules
+/AngularDemos/PopCultureAppWithRoutes/node_modules
 
 # IDEs and editors
 /.idea
@@ -38,6 +41,14 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
+/AngularDemos/HelloWorldApp/e2e/*.js
+/AngularDemos/HelloWorldApp/e2e/*.map
+/AngularDemos/PopCultureApp/e2e/*.js
+/AngularDemos/PopCultureApp/e2e/*.map
+/AngularDemos/PopCultureAppWithRoutes/e2e/*.js
+/AngularDemos/PopCultureAppWithRoutes/e2e/*.map
+
+
 
 # System Files
 .DS_Store
